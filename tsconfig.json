@@ -6,7 +6,8 @@
         "target": "ES2015",
         "jsx": "react",
         "types": [
-            "react"
+            "react",
+            "node"
         ],
         "module": "ESNext",
         "moduleResolution": "node",
