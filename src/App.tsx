@@ -1,13 +1,13 @@
-import React, { Component } from "react"
+import React from 'react'
+import './index.css'
+import Quiz from './components/Quiz'
 
-class App extends Component {
-    render() {
-        return (
-            <div className="App">
-                <h1> Hello, world!</h1>
-            </div>
-        )
-    }
+const App = (): JSX.Element => {
+    return (
+        <div className='App'>
+            <Quiz />
+        </div>
+    )
 }
 
 export default App
