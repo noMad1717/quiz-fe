@@ -1,17 +1,28 @@
+body {
+    background: #2E3440;
+}
+
 .App {
-    background: #f9fbfb;
-    height: 100vh;
-    width: 750px;
+    background: #4C566A;
+    height: 100%;
+    width: 1024px;
     margin: 0 auto;
     padding: 25px;
 }
 
-.App input[type='text'] {
+.quiz {
+    color: #ECEFF4;
+    width: 750px;
+    margin: 0 auto;
+    padding: 0px 10px 25px 10px;
+}
+
+.quiz input[type='text'] {
     width: -webkit-fill-available;
     height: 25px;
 }
 
-.App button {
+.quiz button {
     width: 100px;
     height: 30px;
     margin-top: 10px;

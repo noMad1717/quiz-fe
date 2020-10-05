@@ -2,7 +2,7 @@ import React from 'react'
 import './index.css'
 import Quiz from './components/Quiz'
 
-const App = (): JSX.Element => {
+const App: React.FC = () => {
     return (
         <div className='App'>
             <Quiz />

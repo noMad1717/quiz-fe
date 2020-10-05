@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 
-const questions: [{ question: string, answers: string[]}] = require('../resources/data.json')
+interface Question {
+    question: string
+    answers: string[]
+}
 
-const Quiz = (): JSX.Element => {
-    const [question, setQuestion] = useState<{ question: string, answers: string[] }> (questions[0])
+const questions: Question[] = require('../resources/data.json')
+
+const Quiz: React.FC = () => {
+    const [question, setQuestion] = useState<Question> (questions[0])
     const [inputVal, setInputVal] = useState<string>('')
 
     const getNextQuestion = (): void => {
@@ -15,7 +20,7 @@ const Quiz = (): JSX.Element => {
     }
 
     return (
-        <div>
+        <div className='quiz'>
             <h2>{question.question}</h2>
             <input type='text' value={inputVal} onChange={(e: React.FormEvent<HTMLInputElement>) => setInputVal(e.currentTarget.value)}/>
             <button onClick={(e: React.FormEvent<HTMLButtonElement>) => getNextQuestion()}>Submit</button>
