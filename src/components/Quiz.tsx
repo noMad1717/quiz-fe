@@ -11,12 +11,28 @@ const Quiz: React.FC = () => {
     const [question, setQuestion] = useState<Question> (questions[0])
     const [inputVal, setInputVal] = useState<string>('')
     const inputRef = React.useRef<HTMLInputElement | null>(null)
+    const buttonRef = React.useRef<HTMLButtonElement | null>(null)
 
     useEffect((): void => {
         if (inputRef != null && inputRef.current != null) {
             inputRef.current.focus()
         }
     })
+
+    const handleKeyDown = (e: KeyboardEvent): void => {
+        if (e.key === 'Enter' && buttonRef != null && buttonRef.current != null) {
+            buttonRef.current.click()
+        }
+    }
+
+    useEffect(() => {
+        const quizElem: HTMLElement | null = document.getElementById('quiz')
+        quizElem!.addEventListener('keydown', handleKeyDown)
+
+        return () => {
+            quizElem!.removeEventListener('keydown', handleKeyDown)
+        }
+    }, [])
 
     const getNextQuestion = (): void => {
         const currIndex: number = questions.indexOf(question)
@@ -27,10 +43,10 @@ const Quiz: React.FC = () => {
     }
 
     return (
-        <div className='quiz'>
+        <div id='quiz' className='quiz'>
             <h2>{question.question}</h2>
             <input ref={inputRef} type='text' value={inputVal} onChange={(e: React.FormEvent<HTMLInputElement>) => setInputVal(e.currentTarget.value)}/>
-            <button onClick={(e: React.FormEvent<HTMLButtonElement>) => getNextQuestion()}>Submit</button>
+            <button ref={buttonRef} onClick={(e: React.FormEvent<HTMLButtonElement>) => getNextQuestion()}>Submit</button>
         </div>
     )
 }
